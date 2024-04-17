@@ -1,15 +1,23 @@
-var express = require("express");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const cors = require("cors");
+require("dotenv").config();
 
-var gptRouter = require("./routes/gpt");
+const gptRouter = require("./routes/gpt");
 
-var app = express();
+const app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: ["https://netflix-gpt.netlify.app"],
+    optionsSuccessStatus: 200,
+  })
+);
 
 app.use("/gpt", gptRouter);
 
