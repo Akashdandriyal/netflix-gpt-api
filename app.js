@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["https://netflix-gpt.netlify.app"],
+    origin: ["https://netflix-gptstream.vercel.app"],
     optionsSuccessStatus: 200,
   })
 );
